@@ -1,7 +1,9 @@
 import serial, time, Comm, re
 from binascii import b2a_hex, a2b_hex
 
-
+'''
+将645表时间校为当前时间
+'''
 def plus33(message):
     newstr = ''
     if message is None:
@@ -60,7 +62,7 @@ x = 0
 list_ = []
 date_ = Comm.list2str(Comm.makelist(time.strftime('%y%m%d0%w')))
 # time_ = Comm.list2str(Comm.makelist(time.strftime('%H%M%S')))
-while x < 50:
+while x < 45:
     add_ = str(int(add_09) + x).zfill(12)
     x += 1
     A0_A5 = Comm.list2str(Comm.makelist(add_)[-1::-1])
