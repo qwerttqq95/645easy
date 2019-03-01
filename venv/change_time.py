@@ -2,7 +2,7 @@ import serial, time, Comm, re
 from binascii import b2a_hex, a2b_hex
 
 '''
-将645表时间校为当前时间
+将多台645表时间校为当前时间
 '''
 def plus33(message):
     newstr = ''

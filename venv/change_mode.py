@@ -1,7 +1,7 @@
 '''
-将645表转场内模式，并设地址和校时
+将645表转场内模式，并设地址和校时（单线表）
 '''
-
+from traceback import print_exc
 import Comm, sys, serial, serial.tools.list_ports, time,re
 from UI import UI_change_mode
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -73,13 +73,16 @@ class Main(QMainWindow):
         print('receive:', Comm.makestr(receive))
         self._signal_text.emit('收到：')
         self._signal_text.emit(Comm.makestr(receive))
-        receive = Comm.makelist(receive)
-        if receive[-3] == '00' and receive[-4] == '9f':
-            self._signal_text.emit('成功转厂内模式')
-            print('成功转厂内模式')
+        if receive != '':
+            receive = Comm.makelist(receive)
+            if receive[-3] == '00' and receive[-4] == '9f':
+                self._signal_text.emit('成功转厂内模式')
+                print('成功转厂内模式')
+            else:
+                self._signal_text.emit('转厂内模式结果未知')
+                print('转厂内模式结果未知')
         else:
-            self._signal_text.emit('转厂内模式结果未知')
-            print('转厂内模式结果未知')
+            print('转厂内模式报文未返回')
 
         new_add = self.plus33(self.ui.lineEdit.displayText())
         chang_add = '68' + Comm.list2str(add) + '681412343733373533333363636363' + new_add
@@ -140,7 +143,7 @@ class Main(QMainWindow):
         receive = Comm.makelist(receive)
         if receive[-3] == '00' and receive[-4] == '94':
             self._signal_text.emit('成功改时间')
-            print('成功改时间')
+            print('成功改时间\n', 'Success!')
         else:
             self._signal_text.emit('改时间结果未知')
             print('改时间结果未知')
@@ -216,7 +219,10 @@ class Main(QMainWindow):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    MainWindow = Main()
-    MainWindow.show()
-    sys.exit(app.exec_())
+    try:
+        app = QApplication(sys.argv)
+        MainWindow = Main()
+        MainWindow.show()
+        sys.exit(app.exec_())
+    except:
+        print_exc(file=open('bug.txt', 'a+'))
