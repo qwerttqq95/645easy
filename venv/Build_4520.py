@@ -58,16 +58,16 @@ class Main(QMainWindow):
 
         self.mob_proxy_serial = hex(int(self.ui.lineEdit_10.displayText()))[2:].zfill(4)
 
-        self.mon_text = ['020916001601', '020916001602']
+        self.mon_text = ['020816001601', '020816001602']
         times = 0
         for x in self.mon_text:
             if times == 0:
                 print('x',x,'\nself.mob_3G_APN_len.zfill(2)',self.mob_3G_APN_len.zfill(2),'\nself.mob_3G_APN',self.mob_3G_APN)
                 mob1 = x + '0a' + self.mob_3G_APN_len.zfill(
-                    2) + self.mob_3G_APN + '0a' + self.mob_name_len + self.mob_name + '0a' + self.mob_pass_len + self.mob_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.mob_serial_1 + '02020904' +  qq2 + '12' + self.mob_serial_2
+                    2) + self.mob_3G_APN + '0a' + self.mob_name_len + self.mob_name + '0a' + self.mob_pass_len + self.mob_pass + '0904' + qq + '12' + self.mob_proxy_serial+ '0102' + '02020904' + qq1 + '12' + self.mob_serial_1 + '02020904' +  qq2 + '12' + self.mob_serial_2
                 times += 1
             if times == 1:
-                mob2 = x + '0a' + self.mob_4G_APN_len.zfill(2) + self.mob_4G_APN + '0a' + self.mob_name_len + self.mob_name + '0a' + self.mob_pass_len + self.mob_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.mob_serial_1 + '02020904' +  qq2 + '12' + self.mob_serial_2
+                mob2 = x + '0a' + self.mob_4G_APN_len.zfill(2) + self.mob_4G_APN + '0a' + self.mob_name_len + self.mob_name + '0a' + self.mob_pass_len + self.mob_pass + '0904' + qq + '12' +self.mob_proxy_serial+ '0102' + '02020904' + qq1 + '12' + self.mob_serial_1 + '02020904' +  qq2 + '12' + self.mob_serial_2
         print('mob1', mob1)
         print('mob2', mob2)
         return mob1 + mob2
@@ -113,18 +113,18 @@ class Main(QMainWindow):
 
         self.unicom_proxy_serial = hex(int(self.ui.lineEdit_21.displayText()))[2:].zfill(4)
 
-        self.unicom_text = ['020916021601', '020916021602']
+        self.unicom_text = ['020816021601', '020816021602']
         times = 0
         for x in self.unicom_text:
             if times == 0:
                 print('x', x, '\nself.unicom_3G_APN_len.zfill(2)', self.unicom_3G_APN_len.zfill(2), '\nself.unicom_3G_APN',
                       self.unicom_3G_APN)
                 unicom1 = x + '0a' + self.unicom_3G_APN_len.zfill(
-                    2) + self.unicom_3G_APN + '0a' + self.unicom_name_len + self.unicom_name + '0a' + self.unicom_pass_len + self.unicom_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.unicom_serial_1 + '02020904' + qq2 + '12' + self.unicom_serial_2
+                    2) + self.unicom_3G_APN + '0a' + self.unicom_name_len + self.unicom_name + '0a' + self.unicom_pass_len + self.unicom_pass + '0904' + qq + '12' + self.unicom_proxy_serial+ '0102' + '02020904' + qq1 + '12' + self.unicom_serial_1 + '02020904' + qq2 + '12' + self.unicom_serial_2
                 times += 1
             if times == 1:
                 unicom2 = x + '0a' + self.unicom_4G_APN_len.zfill(
-                    2) + self.unicom_4G_APN + '0a' + self.unicom_name_len + self.unicom_name + '0a' + self.unicom_pass_len + self.unicom_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.unicom_serial_1 + '02020904' + qq2 + '12' + self.unicom_serial_2
+                    2) + self.unicom_4G_APN + '0a' + self.unicom_name_len + self.unicom_name + '0a' + self.unicom_pass_len + self.unicom_pass + '0904' + qq + '12' + self.unicom_proxy_serial+ '0102' + '02020904' + qq1 + '12' + self.unicom_serial_1 + '02020904' + qq2 + '12' + self.unicom_serial_2
         print('unicom1', unicom1)
         print('unicom2', unicom2)
         return unicom1 + unicom2
@@ -171,7 +171,7 @@ class Main(QMainWindow):
 
         self.Telecom_proxy_serial = hex(int(self.ui.lineEdit_20.displayText()))[2:].zfill(4)
 
-        self.Telecom_text = ['020916011601', '020916011602']
+        self.Telecom_text = ['020816011601', '020816011602']
         times = 0
         for x in self.Telecom_text:
             if times == 0:
@@ -179,11 +179,11 @@ class Main(QMainWindow):
                       '\nself.unicom_3G_APN',
                       self.Telecom_3G_APN)
                 Telecom1 = x + '0a' + self.Telecom_3G_APN_len.zfill(
-                    2) + self.Telecom_3G_APN + '0a' + self.Telecom_name_len + self.Telecom_name + '0a' + self.Telecom_pass_len + self.Telecom_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.Telecom_serial_1 + '02020904' + qq2 + '12' + self.Telecom_serial_2
+                    2) + self.Telecom_3G_APN + '0a' + self.Telecom_name_len + self.Telecom_name + '0a' + self.Telecom_pass_len + self.Telecom_pass + '0904' + qq + '12' +self.Telecom_proxy_serial+ '0102' + '02020904' + qq1 + '12' + self.Telecom_serial_1 + '02020904' + qq2 + '12' + self.Telecom_serial_2
                 times += 1
             if times == 1:
                 Telecom2 = x + '0a' + self.Telecom_4G_APN_len.zfill(
-                    2) + self.Telecom_4G_APN + '0a' + self.Telecom_name_len + self.Telecom_name + '0a' + self.Telecom_pass_len + self.Telecom_pass + '0904' + qq + '12' + '0102' + '02020904' + qq1 + '12' + self.Telecom_serial_1 + '02020904' + qq2 + '12' + self.Telecom_serial_2
+                    2) + self.Telecom_4G_APN + '0a' + self.Telecom_name_len + self.Telecom_name + '0a' + self.Telecom_pass_len + self.Telecom_pass + '0904' + qq + '12'+self.Telecom_proxy_serial + '0102' + '02020904' + qq1 + '12' + self.Telecom_serial_1 + '02020904' + qq2 + '12' + self.Telecom_serial_2
         print('Telecom1', Telecom1)
         print('Telecom2', Telecom2)
         return Telecom1 + Telecom2
